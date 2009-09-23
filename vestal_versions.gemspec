@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["laserlemon"]
-  s.date = %q{2009-09-21}
+  s.date = %q{2009-09-23}
   s.description = %q{Keep a DRY history of your ActiveRecord models' changes}
   s.email = %q{steve@laserlemon.com}
   s.extra_rdoc_files = [
@@ -44,14 +44,14 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Keep a DRY history of your ActiveRecord models' changes}
   s.test_files = [
-    "test/between_test.rb",
+    "test/comparable_test.rb",
      "test/changes_test.rb",
-     "test/comparable_test.rb",
-     "test/creation_test.rb",
+     "test/schema.rb",
      "test/latest_changes_test.rb",
      "test/revert_test.rb",
-     "test/schema.rb",
-     "test/test_helper.rb"
+     "test/between_test.rb",
+     "test/test_helper.rb",
+     "test/creation_test.rb"
   ]
 
   if s.respond_to? :specification_version then
