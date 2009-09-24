@@ -7,7 +7,11 @@ module LaserLemon
     end
 
     module ClassMethods
-      def versioned
+      def versioned options = {}
+        
+        cattr_accessor :versioned_columns
+        self.versioned_columns = Array( options[ :only ] ).map( &:to_s )
+        
         has_many :versions, :as => :versioned, :order => 'versions.number ASC', :dependent => :delete_all do
           def between(from, to)
             from_number, to_number = number_at(from), number_at(to)
@@ -53,7 +57,7 @@ module LaserLemon
         end
 
         def needs_version?
-          !changed.empty?
+          !(versioned_columns & changed).empty?
         end
 
         def reset_version(new_version = nil)
