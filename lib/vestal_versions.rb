@@ -10,7 +10,13 @@ module LaserLemon
       def versioned options = {}
         
         cattr_accessor :versioned_columns
-        self.versioned_columns = Array( options[ :only ] ).map( &:to_s )
+        if options[:only]
+          self.versioned_columns = Array(options[:only]).map( &:to_s )  
+        elsif options[:except]
+          self.versioned_columns = column_names - Array(options[:except]).map( &:to_s )
+        else
+          self.versioned_columns = column_names
+        end      
         
         has_many :versions, :as => :versioned, :order => 'versions.number ASC', :dependent => :delete_all do
           def between(from, to)
