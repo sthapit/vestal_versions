@@ -32,7 +32,7 @@ Next, generate and run the first and last versioning migration you'll ever need:
 To version an ActiveRecord model, simply add <tt>versioned</tt> to your class like so:
 
   class User < ActiveRecord::Base
-    versioned(:only => [:first_name, :last_name]
+    versioned :only => [:first_name, :last_name]
     
     validates_presence_of :first_name, :last_name
     
